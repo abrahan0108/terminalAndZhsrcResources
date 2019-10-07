@@ -39,7 +39,7 @@ Plugin 'vim-scripts/indentpython.vim'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'nvie/vim-flake8'
 Plugin 'Valloric/YouCompleteMe'
-
+Plugin 'scrooloose/nerdtree'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -134,7 +134,7 @@ au BufNewFile,BufRead *.py
     \ set textwidth=79 |
     \ set expandtab |
     \ set autoindent |
-    \ set fileformat=unix |
+    \ set fileformat=unix 
 
 " Tab size for full stack indent
 au BufNewFile,BufRead *.js,*.html,*.css
@@ -158,9 +158,6 @@ let g:user_emmet_leader_key=','
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
-
-" Flaggin unnecessary whitespace
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 " -------------------------
 " UTF-8 Support
@@ -194,3 +191,22 @@ let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
 let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
 let g:ycm_complete_in_comments = 1 " Completion in comments
 let g:ycm_complete_in_strings = 1 " Completion in string
+
+" Nerdtree settings
+let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+map <C-n> :NERDTreeToggle<CR>
+
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }
+
+let g:NERDTreeShowIgnoredStatus = 1
